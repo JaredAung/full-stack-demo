@@ -1,0 +1,12 @@
+cd backend && source .venv/bin/activate && uvicorn main:app --reload --port 8000
+
+READ
+curl "http://127.0.0.1:8000/items?limit=2&skip=20" 
+
+ADD
+curl -X POST "http://127.0.0.1:8000/add" \
+  -H "Content-Type: application/json" \
+  -d '{"title":"New Movie","year":2026,"genres":["Drama"],"overview":"A short description."}'
+
+SEARCH 
+curl -G "http://127.0.0.1:8000/search" --data-urlencode "query=Taxi Driver (1976)"
