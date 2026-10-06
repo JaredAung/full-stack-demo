@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { CatalogHeader } from "@/components/catalog-header";
 import { MovieCard } from "@/components/movie-card";
 
@@ -12,6 +13,7 @@ type ItemsResponse = {
 };
 
 export async function Library() {
+  await connection();
   // TODO: READ (fetch movies)
   const backendUrl = process.env.BACKEND_URL;
   if (!backendUrl) {
