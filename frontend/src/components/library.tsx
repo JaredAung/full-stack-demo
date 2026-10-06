@@ -13,7 +13,13 @@ type ItemsResponse = {
 
 export async function Library() {
   // TODO: READ (fetch movies)
-  const response = await fetch("http://127.0.0.1:8000/items?limit=25", {
+  const backendUrl = process.env.BACKEND_URL;
+  if (!backendUrl) {
+    throw new Error(
+      "BACKEND_URL is unset. The frontend service binding injects it at runtime.",
+    );
+  }
+  const response = await fetch(new URL("items?limit=25", backendUrl), {
     cache: "no-store",
   });
   const data: ItemsResponse = await response.json();

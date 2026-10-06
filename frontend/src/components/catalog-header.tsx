@@ -124,7 +124,7 @@ function SearchForm() {
     // TODO: READ (search movies)
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/search?query=${encodeURIComponent(title)}`,
+        `/api/search?query=${encodeURIComponent(title)}`,
       );
 
       if (!response.ok) {
@@ -201,7 +201,7 @@ function DeleteForm() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/search?query=${encodeURIComponent(title)}`,
+        `/api/search?query=${encodeURIComponent(title)}`,
       );
 
       if (!response.ok) {
@@ -269,7 +269,7 @@ function DeleteMovie({ movie }: { movie: SearchMovie }) {
 
     // TODO: DELETE (delete movie)
     try {
-      const response = await fetch("http://127.0.0.1:8000/delete", {
+      const response = await fetch("/api/delete", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -334,7 +334,7 @@ function EditForm() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/search?query=${encodeURIComponent(title)}`,
+        `/api/search?query=${encodeURIComponent(title)}`,
       );
 
       if (!response.ok) {
@@ -412,7 +412,7 @@ function EditMovieForm({ movie }: { movie: SearchMovie }) {
 
     // TODO: UPDATE (edit movie)
     try {
-      const response = await fetch("http://127.0.0.1:8000/edit", {
+      const response = await fetch("/api/edit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -529,7 +529,7 @@ function AddForm() {
     
     // TODO: CREATE (add movie)
     try {
-      const response = await fetch("http://127.0.0.1:8000/add", {
+      const response = await fetch("/api/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

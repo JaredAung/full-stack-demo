@@ -4,7 +4,6 @@ from datetime import datetime
 from bson import ObjectId
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query
-from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 
 from models import Movie, MovieWithId
@@ -22,13 +21,6 @@ PROJECTION = {
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 def env(name: str) -> str:
     return os.environ[name].strip().strip('"')
